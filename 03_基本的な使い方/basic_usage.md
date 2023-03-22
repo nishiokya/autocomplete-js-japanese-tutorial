@@ -39,39 +39,53 @@ autoComplete.jsをインポートし、HTMLファイルで利用できるよう�
 
 ```javascript
 <script>
-    const data = [
-        {name: 'とんこつラーメン', kana: 'とんこつらーめん', romaji: 'tonkotsu ramen'},
-        {name: 'しょうゆラーメン', kana: 'しょうゆらーめん', romaji: 'shoyu ramen'},
-        {name: 'みそラーメン', kana: 'みそらーめん', romaji: 'miso ramen'},
-        {name: 'しおラーメン', kana: 'しおらーめん', romaji: 'shio ramen'},
-        {name: 'つけ麺', kana: 'つけめん', romaji: 'tsukemen'},
-        {name: '担々麺', kana: 'たんたんめん', romaji: 'tantanmen'},
-        {name: '坦々麺', kana: 'たんたんめん', romaji: 'tantanmen'},
-        {name: '油そば', kana: 'あぶらそば', romaji: 'abura soba'},
-        {name: '味噌担々麺', kana: 'みそたんたんめん', romaji: 'miso tantanmen'},
-        {name: 'ねぎラーメン', kana: 'ねぎらーめん', romaji: 'negi ramen'}
-    ];
-
-    new autoComplete({
-        selector: '#autocomplete-input',
+   const autoCompleteJS = new autoComplete({
+        selector: "#autoComplete",
+        placeHolder: "ラーメンの種類を入力してください...",
         data: {
-            src: data,
-            key: ['name', 'kana', 'romaji'],
+            src: ["しょうゆラーメン",
+                "みそラーメン",
+                "しおラーメン",
+                "とんこつラーメン",
+                "つけめん",
+                "油そば",
+                "担々麺",
+                "坦々麺",
+                "味噌担々麺",
+                "鶏白湯ラーメン",
+                "家系ラーメン",
+                "二郎系ラーメン",
+                "博多ラーメン",
+                "札幌ラーメン",
+                "熊本ラーメン",],
+            cache: true,
         },
         resultsList: {
-            render: true,
-            container: () => document.getElementById('suggestion-list'),
-            destination: document.getElementById('autocomplete-input'),
-            position: 'afterend',
-            element: 'ul',
+            element: (list, data) => {
+                if (!data.results.length) {
+                    // Create "No Results" message element
+                    const message = document.createElement("div");
+                    // Add class to the created element
+                    message.setAttribute("class", "no_result");
+                    // Add message text content
+                    message.innerHTML = `<span>Found No Results for "${data.query}"</span>`;
+                    // Append message element to the results list
+                    list.prepend(message);
+                }
+            },
+            noResults: true,
         },
         resultItem: {
-            content: (data, element) => {
-                element.innerHTML = data.match;
-            },
-            element: 'li',
+            highlight: true
         },
-        threshold: 1,
+        events: {
+            input: {
+                selection: (event) => {
+                    const selection = event.detail.selection.value;
+                    autoCompleteJS.input.value = selection;
+                }
+            }
+        }
     });
 </script>
 ```
