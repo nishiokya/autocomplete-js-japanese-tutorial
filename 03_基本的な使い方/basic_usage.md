@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.min.css">
 </head>
 <body>
-    <input type="text" id="autoComplete" placeholder="キーワードを入力してください">
+    <input type="text" id="autoComplete" placeholder="キーワードを入力してください。">
     <ul id="suggestion-list">
     </ul>
 </body>
@@ -25,6 +25,8 @@
 # ステップ2: autoComplete.jsとスタイルシートのインポート
 
 autoComplete.jsをインポートし、HTMLファイルで利用できるようにします。公式CDNから直接読み込むか、自分のプロジェクトにダウンロードして使用してください。
+
+
 
 
 ```html
