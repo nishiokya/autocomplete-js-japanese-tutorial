@@ -104,4 +104,6 @@ const autoCompleteJS = new autoComplete({
 
 
 ### 動作確認
-https://nishiokya.github.io/autocomplete-js-japanese-tutorial/03_基本的な使い方/examples/basic_example.html
+
+- [サンプル(Github Pages)](https://nishiokya.github.io/autocomplete-js-japanese-tutorial/03_基本的な使い方/examples/basic_example.html)
+- [サンプル(jsfiddle)](https://nishiokya.github.io/autocomplete-js-japanese-tutorial/03_基本的な使い方/examples/basic_example.html](https://jsfiddle.net/91c3tz5h/3/)

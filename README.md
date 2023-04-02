@@ -20,3 +20,4 @@
 
 https://nishiokya.github.io/autocomplete-js-japanese-tutorial/03_基本的な使い方/basic_usage.md
 
+- [基本的な使い方](https://nishiokya.github.io/autocomplete-js-japanese-tutorial/03_基本的な使い方/basic_usage.html)
