@@ -101,3 +101,7 @@ const autoCompleteJS = new autoComplete({
 });
 ```
 これで、基本的なautoComplete.jsの使い方が完了しました。入力フィールドにテキストを入力すると、一致する候補が提案リストに表示されます。なお、autoComplete.jsはCSSスタイルシートを含んでいるため、追加のスタイル設定は不要です。
+
+
+### 動作確認
+https://nishiokya.github.io/autocomplete-js-japanese-tutorial/03_基本的な使い方/examples/basic_example.html

@@ -16,4 +16,7 @@
 
 # 基本的な使い方
 
-Tbd
+
+
+https://nishiokya.github.io/autocomplete-js-japanese-tutorial/03_基本的な使い方/basic_usage.md
+
