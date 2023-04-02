@@ -12,12 +12,28 @@
     <meta charset="UTF-8">
     <title>autoComplete.js 基本的な使い方</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.min.css">
-</head>
-<body>
-    <input type="text" id="autoComplete" placeholder="キーワードを入力してください。">
-    <ul id="suggestion-list">
-    </ul>
-</body>
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>autoComplete.js Autocomplete Example</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.3/dist/css/autoComplete.min.css">
+    <style>
+      input {
+        width: 100%;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <input type="text" id="autoComplete">
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+
+  </body>
+
 </html>
 
 ```
@@ -40,55 +56,48 @@ autoComplete.jsをインポートし、HTMLファイルで利用できるよう�
 次に、autoCompleteインスタンスを作成し、必要な設定を行います。
 
 ```javascript
-<script>
-   const autoCompleteJS = new autoComplete({
-        selector: "#autoComplete",
-        placeHolder: "ラーメンの種類を入力してください...",
-        data: {
-            src: ["しょうゆラーメン",
-                "みそラーメン",
-                "しおラーメン",
-                "とんこつラーメン",
-                "つけめん",
-                "油そば",
-                "担々麺",
-                "坦々麺",
-                "味噌担々麺",
-                "鶏白湯ラーメン",
-                "家系ラーメン",
-                "二郎系ラーメン",
-                "博多ラーメン",
-                "札幌ラーメン",
-                "熊本ラーメン",],
-            cache: true,
-        },
-        resultsList: {
-            element: (list, data) => {
-                if (!data.results.length) {
-                    // Create "No Results" message element
-                    const message = document.createElement("div");
-                    // Add class to the created element
-                    message.setAttribute("class", "no_result");
-                    // Add message text content
-                    message.innerHTML = `<span>Found No Results for "${data.query}"</span>`;
-                    // Append message element to the results list
-                    list.prepend(message);
-                }
-            },
-            noResults: true,
-        },
-        resultItem: {
-            highlight: true
-        },
-        events: {
-            input: {
-                selection: (event) => {
-                    const selection = event.detail.selection.value;
-                    autoCompleteJS.input.value = selection;
-                }
-            }
-        }
-    });
-</script>
+const autoCompleteJS = new autoComplete({
+  placeHolder: "Search for Food...",
+  data: {
+    src: [
+      "豚骨ラーメン",
+      "醤油ラーメン",
+      "味噌ラーメン",
+      "塩ラーメン",
+      "つけ麺",
+      "博多ラーメン",
+      "札幌ラーメン",
+      "東京ラーメン",
+      "熊本ラーメン",
+      "鹿児島ラーメン",
+      "担々麺",
+      "冷やし中華",
+      "Tonkotsu Ramen",
+      "Shoyu Ramen",
+      "Miso Ramen",
+      "Shio Ramen",
+      "Tsukemen",
+      "Hakata Ramen",
+      "Sapporo Ramen",
+      "Tokyo Ramen",
+      "Kumamoto Ramen",
+      "Kagoshima Ramen",
+      "Tantanmen",
+      "Hiyashi Chuka"
+    ],
+    cache: true,
+  },
+  resultItem: {
+    highlight: true
+  },
+  events: {
+    input: {
+      selection: (event) => {
+        const selection = event.detail.selection.value;
+        autoCompleteJS.input.value = selection;
+      }
+    }
+  }
+});
 ```
 これで、基本的なautoComplete.jsの使い方が完了しました。入力フィールドにテキストを入力すると、一致する候補が提案リストに表示されます。なお、autoComplete.jsはCSSスタイルシートを含んでいるため、追加のスタイル設定は不要です。
