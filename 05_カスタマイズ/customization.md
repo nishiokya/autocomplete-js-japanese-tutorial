@@ -5,12 +5,12 @@
 
 | 項目名       | 説明                                                                                                                           | 型                 | デフォルト値                                                  | サンプル値                                                             |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------ | ------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| name         | インスタンス名                                                                                                                 | String             | autoComplete                                                  |                                                                        |
-| selector     | 入力要素を指定するセレクタ                                                                                                     | String or Function | autoComplete                                                  | selector: () => {<br>    return [Element]; // Any valid selector<br>}, |
+| name         | インスタンス名                                                                                                                 | String             | #autoComplete                                                  |                                                                        |
+| selector     | 入力要素を指定する(#から始まる）セレクタ()                                                                                                     | String or Function | autoComplete                                                  | selector: () => {<br>    return [Element]; // Any valid selector<br>}, |
 | wrapper      |                                                                                                                                | Boolean            | true                                                          |                                                                        |
 | data         | 自動補完のデータソースとキー検索方法を指定,methodと一緒に指定                                                                  | Object             | {src: [}},keys:null}                                          | {src: ['apple', 'banana'], key: ['value']}                             |
 | trigger      | 自動補完が開始されるトリガーイベント                                                                                           | Function           | { event: ["input"], condition: (query) => query.length >= 1 } | { event: ["input"], condition: (query) => query.length >= 3 }          |
-| query        | ユーザー入力を処理する関数                                                                                                     | Function           | null                                                          | (input) => { return input}                                             |
+| query        | ユーザー入力を置き換えてdataに引き当てる  | Function           | null                                                          | (input) => { return return input.replace("lamen", "ラーメン");}                                             |
 | placeHolder  | 入力フィールドのプレースホルダーテキスト                                                                                       | String             | Blank/Empty                                                   | "Type to search"                                                       |
 | threshold    | 検索を開始する最小文字数                                                                                                       | Integer            | 1                                                             | 3                                                                      |
 | debounce     | 入力間隔を制御するデバウンス時間（ミリ秒）                                                                                     | Integer            | 0                                                             | 300                                                                    |
@@ -98,14 +98,14 @@ resultsList: {
 
 | 項目名                                  | 説明                                                                                           | 型                                                         | サンプル値 |
 | --------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | ---------- |
-項目名	説明	型	デフォルト値
-content	結果リスト内の各項目をカスタマイズする関数	Function	null
-element	結果リスト内の各項目のHTML要素を指定する文字列	String	"li"
-idName	結果リスト内の各項目に適用されるID属性の名前	String	"id"
-className	結果リスト内の各項目に適用されるCSSクラス名	String	"result-item"
-highlight	ユーザーが入力した検索クエリを結果リスト内で強調表示するかどうか	Boolean	false
-selected	ユーザーが選択した項目に適用されるCSSクラス名	String	"selected"
-maxResults	結果リストに表示される最大結果数	Integer	Infinity
+|content|	結果リスト内の各項目をカスタマイズする関数|	Function	|null|
+|element	|結果リスト内の各項目のHTML要素を指定する文字列	|String	|"li"|
+|idName	|結果リスト内の各項目に適用されるID属性の名前	|String	|"id"|
+|className	|結果リスト内の各項目に適用されるCSSクラス名	|String	|"result-item"|
+|highlight	|ユーザーが入力した検索クエリを結果リスト内で強調表示するかどうか	|Boolean	|false|
+|selected	|ユーザーが選択した項目に適用されるCSSクラス名	|String	"selected"|
+|maxResults	|結果リストに表示される最大結果数|	Integer	|Infinity|
+
 
 
 ```javascript
