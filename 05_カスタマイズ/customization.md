@@ -3,23 +3,97 @@
 
 ## Options
 
-| 項目名       | 説明                                                                                                                           | 型                 | デフォルト値                                                  | サンプル値                                                             |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------ | ------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| name         | インスタンス名                                                                                                                 | String             | #autoComplete                                                  |                                                                        |
-| selector     | 入力要素を指定する(#から始まる）セレクタ()                                                                                                     | String or Function | autoComplete                                                  | selector: () => {<br>    return [Element]; // Any valid selector<br>}, |
-| wrapper      |                                                                                                                                | Boolean            | true                                                          |                                                                        |
-| data         | 自動補完のデータソースとキー検索方法を指定,methodと一緒に指定                                                                  | Object             | {src: [}},keys:null}                                          | {src: ['apple', 'banana'], key: ['value']}                             |
-| trigger      | 自動補完が開始されるトリガーイベント                                                                                           | Function           | { event: ["input"], condition: (query) => query.length >= 1 } | { event: ["input"], condition: (query) => query.length >= 3 }          |
-| query        | ユーザー入力を置き換えてdataに引き当てる  | Function           | null                                                          | (input) => { return return input.replace("lamen", "ラーメン");}                                             |
-| placeHolder  | 入力フィールドのプレースホルダーテキスト                                                                                       | String             | Blank/Empty                                                   | "Type to search"                                                       |
-| threshold    | 検索を開始する最小文字数                                                                                                       | Integer            | 1                                                             | 3                                                                      |
-| debounce     | 入力間隔を制御するデバウンス時間（ミリ秒）                                                                                     | Integer            | 0                                                             | 300                                                                    |
-| searchEngine | 検索エンジンのロジックを指定                                                                                                   | String or Function | "strict"                                                      | "loose" or (query, record) => { return record.value.includes(query)}   |
-| diacritics   | ダイアクリティカルマークを無視するかどうか、「café（カフェ）」を検索する際に、éをeと同じように扱えるようにすることができます。 | Boolean            | true                                                          | false                                                                  |
-| resultsList  | 検索結果リストの設定                                                                                                           | Object or Boolean  | {}                                                            | {} or false                                                            |
-| submit       | Enterボタンのデフォルト動作                                                                                                    | Boolean            | false                                                         | true                                                                   |
-| events       | 入力フィールドと結果リストのイベントの追加または上書き                                                                         | Object             | {}                                                            | {}                                                                     |
 
+機能や見た目をカスタマイズした自動補完機能を実装することができます。
+具体的な設定方法やパラメータについては、それぞれの項目の解説を参照してください。
+以下に主な設定項目を示します。
+
+| 項目名   | 説明   | 型 | デフォルト値  | サンプル値 |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------ | ------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| name  | インスタンスに任意の名前をつけることができます。 | String  | autoComplete   ||
+| selector | 入力要素を指定するセレクタを設定できます。 | String or Function | #autoComplete  | selector: () => {<br>return [Element]; // Any valid selector<br>}, |
+| wrapper  || Boolean| true  ||
+| data |自動補完のデータソースとキー検索方法を指定できます  | Object | {src: [}},keys:null}  | {src: ['apple', 'banana'], key: ['value']} |
+| trigger  | 自動補完が開始されるトリガーイベントを設定できます。   | Function   | { event: ["input"], condition: (query) => query.length >= 1 } | { event: ["input"], condition: (query) => query.length >= 3 }  |
+| query| 入力フィールドのプレースホルダーテキストを設定できます。 | Function   | null  | (input) => { return input} |
+| placeHolder  | 入力フィールドのプレースホルダーテキスト   | String | Blank/Empty   | "Type to search"   |
+| threshold| 検索を開始する最小文字数を設定できます。  | Integer| 1 | 3  |
+| debounce | 入力間隔を制御するデバウンス時間（ミリ秒）を設定できます。 | Integer| 0 | 300|
+| searchEngine | 検索エンジンのロジックを設定できます。 | String or Function | "strict"  | "loose" or (query, record) => { return record.value.includes(query)}   |
+| diacritics   | ダイアクリティカルマークを無視するかどうか設定できます。falseにすると「café（カフェ）」を検索する際に、éをeと同じように扱えるようにすることができます。 | Boolean| true  | false  |
+| resultsList  | 検索結果リストの設定   | Object or Boolean  | {}| {} or false|
+| submit   | Enterボタンのデフォルト動作を設定できます。 Boolean| false | true   |
+| events   | 入力フィールドと結果リストのイベントの追加または上書き | Object | {}| {} |
+
+
+
+### 設定例
+
+
+この設定例では、日本のラーメンと一部英語表記のラーメンを検索する自動補完機能が実装されています。
+
+```javascript
+const autoCompleteJS = new autoComplete({
+  name: "autoComplete",
+  selector: "#autoComplete",
+  wrapper: true,
+  data: {
+    src: [
+      "豚骨ラーメン",
+      "醤油ラーメン",
+      "味噌ラーメン",
+      "塩ラーメン",
+      "つけ麺",
+      "博多ラーメン",
+      "札幌ラーメン",
+      "東京ラーメン",
+      "熊本ラーメン",
+      "鹿児島ラーメン",
+      "担々麺",
+      "冷やし中華",
+      "Tonkotsu Ramen",
+      "Shoyu Ramen",
+      "Miso Ramen",
+      "Shio Ramen",
+      "Tsukemen",
+      "Hakata Ramen",
+      "Sapporo Ramen",
+      "Tokyo Ramen",
+      "Kumamoto Ramen",
+      "Kagoshima Ramen",
+      "Tantanmen",
+      "Hiyashi Chuka"
+    ],
+    cache: true,
+  },
+  trigger: (query) => {
+    return query.replace(/ /g, "").length > 0; // スペースを無視する
+  },
+  query: (input) => {
+    return input.replace("lamen", "ラーメン");
+  },
+  placeHolder: "検索クエリを入力してください...",
+  threshold: 2,
+  debounce: 300, // Milliseconds value
+  searchEngine: "loose",
+  diacritics: true,
+  resultItem: {
+    highlight: true
+  },
+  submit: true,
+  events: {
+    input: {
+      selection: (event) => {
+        const selection = event.detail.selection.value;
+        autoCompleteJS.input.value = selection;
+      }
+    }
+  }
+});
+
+
+```
+この設定により、ラーメンの種類を検索しやすくする自動補完機能が実現されています。例えば、"lamen"と入力された場合でも"ラーメン"として検索結果が表示されるようになっています。また、検索結果の一致部分がハイライトされているため、ユーザーが求めている情報をすぐに見つけられるようになっています。
 ### data
 
 | 項目名                                  | 説明                                                                                           | 型                                                         | サンプル値 |

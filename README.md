@@ -21,7 +21,7 @@
 - [基本的な使い方](https://nishiokya.github.io/autocomplete-js-japanese-tutorial/03_基本的な使い方/basic_usage.html)
 
 
-- # 応用的なカスタマイズ
+- # 応用的な使い方
 
 このチュートリアルでは、さらに応用的なカスタマイズ方法を紹介しています。以下のリンクから詳細を参照できます。 
 - [データソースのカスタマイズ](https://nishiokya.github.io/autocomplete-js-japanese-tutorial/04_%E5%BF%9C%E7%94%A8%E7%9A%84%E3%81%AA%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA/data_source_customization.html) 
